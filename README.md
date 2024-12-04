@@ -183,7 +183,8 @@ pacman -S mingw-w64-x86_64-toolchain
 
 
 
-cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release  -DCMAKE_C_COMPILER="gcc" -DCMAKE_CXX_COMPILER="g++" -DLLVM_ENABLE_PROJECTS="clang;lld" -DLLVM_TARGETS_TO_BUILD="X86;ARM;AArch64" -DCMAKE_INSTALL_PREFIX=../llvm-install ../llvm-project/llvm
+cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER="gcc" -DCMAKE_CXX_COMPILER="g++" -DLLVM_ENABLE_PROJECTS="clang;lld" -DLLVM_TARGETS_TO_BUILD="X86;ARM;AArch64" -DCMAKE_INSTALL_PREFIX=../llvm-install ../
+
 
 
 编译 LLVM：
