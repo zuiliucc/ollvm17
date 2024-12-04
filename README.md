@@ -146,3 +146,53 @@ Obfuscation/IndirectGlobalVariable.cpp
 [SsagePass](https://github.com/SsageParuders/SsagePass)
 
 [wwh1004-ollvm16](https://github.com/wwh1004/ollvm-16)
+
+
+win11下用mingw64 编译  如下 
+前置条件
+安装依赖工具：
+
+下载并安装 CMake。
+下载并安装 Ninja。
+下载并安装 MinGW-w64（例如从 MSYS2 获取）。
+下载并安装 Python（建议 3.7 或以上版本）。
+下载 Git，用于拉取 LLVM 仓库。
+设置环境变量：
+
+将 MinGW/bin、CMake/bin 和 Ninja 的路径加入系统的环境变量 PATH。
+
+
+
+MSYS2下载地址 https://www.msys2.org/
+安装后 更新命令
+
+更新 MSYS2 的软件包管理器： 打开 MSYS2 Shell（msys2.exe），然后运行以下命令：
+pacman -Syu
+安装 MinGW-w64 工具链： 根据目标架构安装相应的工具链：
+
+安装适用于 64 位系统的工具链：
+bash
+复制代码
+pacman -S mingw-w64-x86_64-toolchain
+
+配置环境变量： 将 C:\msys64\mingw64\bin 添加到系统环境变量 PATH 中：
+
+在 Windows 搜索栏输入 "环境变量"。
+编辑系统变量 PATH，添加 C:\msys64\mingw64\bin。
+然后关闭并重新打开终端，确保系统可以正确找到 gcc 和 g++。
+
+
+
+cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release  -DCMAKE_C_COMPILER="gcc" -DCMAKE_CXX_COMPILER="g++" -DLLVM_ENABLE_PROJECTS="clang;lld" -DLLVM_TARGETS_TO_BUILD="X86;ARM;AArch64" -DCMAKE_INSTALL_PREFIX=../llvm-install ../llvm-project/llvm
+
+
+编译 LLVM：
+
+bash
+复制代码
+ninja
+安装 LLVM： 将构建完成的文件安装到目标目录。
+
+bash
+复制代码
+ninja install
